@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="description" content="Enhancing Video Understanding with AI-Generated Movies">
+  <meta name="keywords" content="LLM, Video Understanding, AI-Generated">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>DreamFrame: Enhancing Video Understanding via Automatically Generated QA and Style-Consistent Keyframes</title>
+
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet">
+
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+  <link rel="icon" href="./static/images/icon.png">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+  <script src="./static/js/bulma-carousel.min.js"></script>
+  <script src="./static/js/bulma-slider.min.js"></script>
+  <script src="./static/js/index.js"></script>
+</head>
+
+<body>
+
+
+
+  <section class="hero">
+    <div class="hero-body">
+      <div class="container is-max-desktop">
+        <div class="columns is-centered">
+          <div class="column has-text-centered">
+            <h1 class="title is-1 publication-title">DreamFrame: Enhancing Video Understanding via Automatically Generated QA and Style-Consistent Keyframes</h1>
+            <div class="is-size-5 publication-authors">
+              <span class="author-block">
+                <a href="https://github.com/Deaddawn">Zhende Song</a><sup>1</sup>,</span>
+              <span class="author-block">
+                <a href="https://github.com/doctorlightt">Chenchen Wang</a><sup>1</sup>,</span>
+              <span class="author-block">
+                <a href="https://github.com/sjmFDU">Jiamu Sheng</a><sup>1</sup>,
+              </span>
+              <span class="author-block">
+                <a href="https://icoz69.github.io/">Chi Zhang</a><sup>2</sup>,
+              </span>
+              <span class="author-block">
+                <a href="https://scholar.google.com/citations?user=K7drMDgAAAAJ&hl=en">Shengji Tang</a><sup>1</sup>,</span>
+              <!-- <span class="author-block">
+                <a
+                  href="https://scholar.google.com/citations?hl=en&user=BJdigYsAAAAJ&view_op=list_works&sortby=pubdate">Gang
+                  Yu</a><sup>2</sup>,
+              </span> -->
+              <span class="author-block">
+                <a href="https://scholar.google.com/citations?hl=zh-CN&user=gsLd2ccAAAAJ">Jiayuan Fan&#10022</a><sup>1</sup>,
+              </span>
+              <span class="author-block">
+                <a href="https://eetchen.github.io/">Tao Chen</a><sup>1</sup>
+              </span>
+            </div>
+            
+            <div class="is-size-5 publication-authors">
+              <span class="author-block"><sup>1</sup>Embedded DL Lab, Fudan University</span>
+              <span class="author-block"><sup>2</sup>AGI Lab, Westlake University</span>
+            </div>
+            <div class="is-size-8 publication-authors">
+              <span class="author-block"><sup></sup>(&#10022 Corresponding Author)</span>
+            </div>
+            <div class="column has-text-centered">
+              <div class="publication-links">
+                <!-- PDF Link. -->
+                <span class="link-block">
+                  <a href="https://arxiv.org/pdf/2403.01422.pdf" class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon">
+                      <i class="fas fa-file-pdf"></i>
+                    </span>
+                    <span>Paper</span>
+                  </a>
+                </span>
+                <span class="link-block">
+                  <a href="https://arxiv.org/abs/2403.01422" class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon">
+                      <i class="ai ai-arxiv"></i>
+                    </span>
+                    <span>Supplementary</span>
+                  </a>
+                </span>
+                <!-- Video Link. -->
+
+                <!-- Code Link. -->
+                <span class="link-block">
+                  <a href="https://github.com/Deaddawn/MovieLLM-code"
+                    class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon">
+                      <i class="fab fa-github"></i>
+                    </span>
+                    <span>Code</span>
+                  </a>
+                </span>
+                <!-- Dataset Link. -->
+                <span class="link-block">
+                  <a href="https://huggingface.co/datasets/sfsdfsafsddsfsdafsa/MovieLLM-raw-data/tree/main"
+                    class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon">
+                      <i class="far fa-images"></i>
+                    </span>
+                    <span>Data</span>
+                  </a>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+
+
+
+  <section class="hero teaser">
+
+    <div class="container is-max-desktop">
+      <div class="hero-body">
+        <h2 class="title is-3 has-text-centered">
+          <span class="dnerf"><img src="./static/images/icon.png" alt="Icon"
+              style="width: 48px; height: 48px; vertical-align: middle;">Consistent Key Frames From DreamFrame</span>
+        </h2>
+        <video id="teaser" autoplay muted loop playsinline height="100%">
+          <source src="./static/videos/cat0.mp4" type="video/mp4">
+        </video>
+        <video id="teaser" autoplay muted loop playsinline height="100%">
+          <source src="./static/videos/cat4.mp4" type="video/mp4">
+        </video>
+        <video id="teaser" autoplay muted loop playsinline height="100%">
+          <source src="./static/videos/cat7.mp4" type="video/mp4">
+        </video>
+        <video id="teaser" autoplay muted loop playsinline height="100%">
+          <source src="./static/videos/cat14.mp4" type="video/mp4">
+        </video>
+        <video id="teaser" autoplay muted loop playsinline height="100%">
+          <source src="./static/videos/cat93.mp4" type="video/mp4">
+        </video>
+        <video id="teaser" autoplay muted loop playsinline height="100%">
+          <source src="./static/videos/cat106.mp4" type="video/mp4">
+        </video>
+        <h2 class="subtitle has-text-centered">
+          <span class="dnerf">DreamFrame</span> generate consistent key frames with immobilized style on various scenes
+        </h2>
+      </div>
+    </div>
+  </section>
+
+
+
+
+  <section class="section">
+    <div class="container is-max-desktop">
+      <!-- Teaser. -->
+      <div class="columns is-centered has-text-centered">
+        <div class="column">
+          <div class="content has-text-justified">
+            <div class="center-image">
+              <figure>
+                <img src="./static/images/fig1.png" class="interpolation-image"
+                  alt="Interpolate start reference image." />
+                <figcaption>
+                  <strong>Examples of generated video instruction data.</strong> We use GPT-4 and guided
+                  text-to-image generation models
+                  to generate consistent key frames of move-level video with reasonable lines and corresponding
+                  question-answer pairs.
+                  These data are used to train multimodal large language models on video understanding.
+                </figcaption>
+              </figure>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container is-max-desktop">
+      <!-- Abstract. -->
+      <div class="columns is-centered has-text-centered">
+        <div class="column">
+          <h2 class="title is-3">Abstract</h2>
+          <div class="content has-text-justified">
+            <p>
+              Recent large vision-language models (LVLMs) for video understanding are primarily fine-tuned with various videos scraped from
+online platforms. Existing datasets, such as ActivityNet, require
+considerable human labor for structuring and annotation before
+effectively utilized for tuning LVLMs. While current LVLMs are
+primarily trained on existing datasets in broad, general-purpose
+settings, adapting them to specific downstream scenarios remains
+challenging, as collecting and annotating task-specific videos is
+highly labor-intensive and time-consuming. To address this issue,
+we propose a three-stage framework named DreamFrame for auto-
+matically generating style-consistent keyframes and corresponding
+question-answer (QA) pairs to support LVLM instruction tuning.
+DreamFrame generates datasets in a movie-like manner. First, we
+utilize an LLM to generate structured movie plots including movie
+prior information (like overview and style), frame descriptions and
+plot-related QA pairs, with a story expansion strategy to mitigate
+context length limitations. Then, to ensure visual consistency across
+generated frames, we design a Style Immobilization Process which
+maintains consistent style through an embedding learning strategy.
+Finally, frame descriptions and style embeddings are integrated to
+produce coherent keyframes. Using DreamFrame, we construct a
+dataset comprising approximately 1k stylized keyframe-like videos
+and 100k diverse QA pairs. Extensive fine-tuned experiments on
+various LVLM architectures demonstrate the effectiveness of the
+proposed dataset. Furthermore, based on the proposed dataset, we fine-tune a new LVLM named DreamFrame-7B, which significantly
+surpasses the previous similar-sized LVLMs (+2.2 compared with
+VideoLLaVA-7B on MvBench) across different benchmarks. 
+            </p>
+          </div>
+        </div>
+      </div>
+      <!-- framework. -->
+      <div class="columns is-centered has-text-centered">
+        <div class="column ">
+          <h2 class="title is-3">Pipeline</h2>
+          <div class="content has-text-justified">
+            <img src="./static/images/PIPELINE.png" class="framework" />
+            <p>Our proposed pipeline for generating video instruction tuning datasets. With merely a simple thematic description, our pipeline is capable of generating key frames of an entire film. The pipeline can be roughly divided into three stages: (a) movie plot generation, where we generate the whole movie plot based on a theme phrase. (b) style immobilization process, where we learn a style embedding to immobilize the style-related keywords generated from the plot into the latent space of the diffusion model, guiding it to generate frames with fixed style. (c) video instruction data generation, where we integrate all the previously obtained information to ultimately generate consistent key frames.</p>
+          </div>
+        </div>
+      </div>
+      <!-- Paper video. -->
+      <!-- <div class="columns is-centered has-text-centered">
+        <div class="column ">
+          <h2 class="title is-3">Video</h2>
+          <div class="publication-video">
+            <video id="teaser" controls loop playsinline height="100%">
+              <source src="./static/videos/MovieLLM.mp4" type="video/mp4">
+            </video>
+          </div>
+        </div>
+      </div> -->
+      <div class="columns is-centered has-text-centered">
+        <div class="column ">
+          <h2 class="title is-3">More Results</h2>
+          <div class="content has-text-justified">
+            <img src="./static/images/appendix6-1.png" class="appendix" />
+            <img src="./static/images/appendix1-1.png" class="appendix" />
+            <img src="./static/images/appendix2-1.png" class="appendix" />
+          </div>
+        </div>
+      </div>
+      <!--/ Paper video. -->
+
+  </section>
+
+
+
+
+
+  <!-- <section class="section" id="BibTeX">
+    <div class="container is-max-desktop content">
+      <h2 class="title">BibTeX</h2>
+      <pre><code>@misc{song2024moviellm,
+        title={MovieLLM: Enhancing Long Video Understanding with AI-Generated Movies}, 
+        author={Zhende Song and Chenchen Wang and Jiamu Sheng and Chi Zhang and Gang Yu and Jiayuan Fan and Tao Chen},
+        year={2024},
+        eprint={2403.01422},
+        archivePrefix={arXiv},
+        primaryClass={cs.CV}
+  }</code></pre>
+    </div>
+  </section> -->
+
+
+  <footer class="footer">
+    <div class="container">
+      <div class="content has-text-centered">
+        <a class="icon-link" href="">
+          <i class="fas fa-file-pdf"></i>
+        </a>
+        <a class="icon-link" href="https://github.com/Deaddawn/MovieLLM-code" class="external-link" disabled>
+          <i class="fab fa-github"></i>
+        </a>
+      </div>
+      <div class="columns is-centered">
+        <div class="column is-8">
+          <div class="content">
+            <p>
+              This website is licensed under a <a rel="license"
+                href="http://creativecommons.org/licenses/by-sa/4.0/">Creative
+                Commons Attribution-ShareAlike 4.0 International License</a>.
+            </p>
+            <p>
+              This means you are free to borrow the <a href="https://github.com/nerfies/nerfies.github.io">source
+                code</a> of this website,
+              we just ask that you link back to this page in the footer.
+              Please remember to remove the analytics code included in the header of the website which
+              you do not want on your website.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+</body>
+
+</html>
